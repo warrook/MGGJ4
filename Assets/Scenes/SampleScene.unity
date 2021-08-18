@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 398507359}
   - component: {fileID: 398507358}
   - component: {fileID: 398507357}
+  - component: {fileID: 398507360}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -219,6 +220,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 398507355}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &398507360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398507355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54283bfd4f02ca041a4725abd0ff3d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSet:
+  - {fileID: 11400000, guid: 076e373d74e71c44299938bcb31a8a23, type: 2}
 --- !u!1 &696504880
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,6 +371,7 @@ GameObject:
   - component: {fileID: 900495270}
   - component: {fileID: 900495269}
   - component: {fileID: 900495268}
+  - component: {fileID: 900495271}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Untagged
@@ -440,6 +456,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 900495266}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &900495271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900495266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54283bfd4f02ca041a4725abd0ff3d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSet:
+  - {fileID: 11400000, guid: 076e373d74e71c44299938bcb31a8a23, type: 2}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,12 +567,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allies:
-  - {fileID: 398507355}
-  - {fileID: 900495266}
-  - {fileID: 1445754604}
+  - {fileID: 398507360}
+  - {fileID: 900495271}
+  - {fileID: 1445754609}
   enemies:
-  - {fileID: 1291286354}
-  - {fileID: 1777999625}
+  - {fileID: 1291286359}
+  - {fileID: 1777999630}
 --- !u!1 &1273772468
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,6 +618,7 @@ GameObject:
   - component: {fileID: 1291286358}
   - component: {fileID: 1291286357}
   - component: {fileID: 1291286356}
+  - component: {fileID: 1291286359}
   m_Layer: 0
   m_Name: Enemy1
   m_TagString: Untagged
@@ -672,6 +703,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1291286354}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1291286359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291286354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54283bfd4f02ca041a4725abd0ff3d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSet:
+  - {fileID: 11400000, guid: a9e427ef8afe3504cac85f8fa5b5bf62, type: 2}
 --- !u!1 &1445754604
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,6 +729,7 @@ GameObject:
   - component: {fileID: 1445754608}
   - component: {fileID: 1445754607}
   - component: {fileID: 1445754606}
+  - component: {fileID: 1445754609}
   m_Layer: 0
   m_Name: Player3
   m_TagString: Untagged
@@ -768,6 +814,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1445754604}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1445754609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445754604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54283bfd4f02ca041a4725abd0ff3d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSet:
+  - {fileID: 11400000, guid: 076e373d74e71c44299938bcb31a8a23, type: 2}
 --- !u!1 &1617043277
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,6 +937,7 @@ GameObject:
   - component: {fileID: 1777999629}
   - component: {fileID: 1777999628}
   - component: {fileID: 1777999627}
+  - component: {fileID: 1777999630}
   m_Layer: 0
   m_Name: Enemy2
   m_TagString: Untagged
@@ -961,3 +1022,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1777999625}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1777999630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777999625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54283bfd4f02ca041a4725abd0ff3d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSet:
+  - {fileID: 11400000, guid: a9e427ef8afe3504cac85f8fa5b5bf62, type: 2}
