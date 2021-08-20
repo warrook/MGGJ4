@@ -18,15 +18,47 @@ public abstract class MoveBehavior
 	public virtual void OnStop() { Debug.Log("OnStop"); }
 	public virtual void OnEnd() { Debug.Log("OnEnd"); }
 
-	public IEnumerator TargetSelection()
+	public IEnumerator TargetSelection(Character[] participants)
 	{
-		if (primaryTarget != TargetSelector.None)
-		{
-			for (int i = 0; i < numTargets; i++)
-			{
+		int need = numTargets;
+		Character[] selected = new Character[need];
+		Debug.Log("Need " + need + " selected targets.");
 
-			}
+		int carat = 0;
+
+		if (primaryTarget == TargetSelector.None)
+		{
+			yield return null;
 		}
+		else
+		{
+			while (need > 0)
+			{
+				if (Input.GetKeyDown(KeyCode.LeftArrow))
+				{
+					carat = ((carat - 1) + participants.Length) % participants.Length;
+					Debug.Log(carat);
+				}
+				if (Input.GetKeyDown(KeyCode.RightArrow))
+				{
+					carat = (carat + 1) % participants.Length;
+					Debug.Log(carat);
+				}
+
+				if (Input.GetKeyDown(KeyCode.Space))
+				{
+					selected[need - 1] = participants[carat]; //doesn't check if already in list
+					need--;
+					Debug.Log(carat);
+				}
+
+				yield return null;
+			}
+
+			Debug.Log("Selected " + selected.Length + " targets");
+			targets = selected;
+		}
+
 		yield return null;
 	}
 }

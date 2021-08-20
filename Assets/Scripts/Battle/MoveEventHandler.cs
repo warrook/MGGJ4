@@ -4,6 +4,7 @@ using UnityEngine.Events;
 
 public class MoveEventHandler
 {
+	private BattleController controller;
 	public UnityEvent
 		Select, //When the player selects the move
 		Deselect, //When the player backs out of a move
@@ -12,8 +13,10 @@ public class MoveEventHandler
 		Stop, //When the move stops an effect
 		End; //When the move finishes
 
-	public MoveEventHandler()
+	public MoveEventHandler(BattleController controller)
 	{
+		this.controller = controller;
+
 		Select = new UnityEvent();
 		Deselect = new UnityEvent();
 		Use = new UnityEvent();

@@ -8,7 +8,9 @@ public class BattleController : MonoBehaviour
     public Character[] allies;
     public Character[] enemies;
 
-	UnityEvent Select, Use, Begin, Stop, End;
+	private List<Character> participants;
+
+	//UnityEvent Select, Use, Begin, Stop, End;
 
 	private bool active;
 
@@ -19,7 +21,7 @@ public class BattleController : MonoBehaviour
 
 	IEnumerator TurnPacer()
 	{
-		var participants = new List<Character>();
+		participants = new List<Character>();
 
 		participants.AddRange(allies);
 		participants.AddRange(enemies);
@@ -31,19 +33,26 @@ public class BattleController : MonoBehaviour
 		{
 			for (var i = 0; i < participants.Count; i++)
 			{
-				Character part = participants[i];
-				Debug.Log(part.name + " " + part.moveSet[0].name);
-				MoveEventHandler handler = new MoveEventHandler();
-				handler.Subscribe(part.moveSet[0]);
+				Character part = participants[i]; //Pick a character to do next
+				Move move = part.moveSet[0]; //Take its first move
+				Debug.Log(part.name + " " + move.name);
+				MoveEventHandler handler = new MoveEventHandler(this); //Make this a reference to a singleton instead
 
-				Debug.Log(part.moveSet[0].behavior.numTargets);
+				handler.Subscribe(move);
 
-				//handler.Select.Invoke();
-				//handler.Use.Invoke();
-				//handler.Begin.Invoke();
-				//handler.Stop.Invoke();
-				//handler.End.Invoke();
-				//handler.Deselect.Invoke();
+				yield return move.behavior.TargetSelection(participants.ToArray());
+				handler.Select.Invoke();
+				handler.Use.Invoke();
+				handler.Begin.Invoke();
+				handler.Stop.Invoke();
+				handler.End.Invoke();
+
+				//Character part = participants[i];
+				//Debug.Log(part.name + " " + part.moveSet[0].name);
+				//MoveEventHandler handler = new MoveEventHandler();
+				//handler.Subscribe(part.moveSet[0]);
+
+				//Debug.Log(part.moveSet[0].behavior.numTargets);
 
 				yield return WaitForInput();
 			}
