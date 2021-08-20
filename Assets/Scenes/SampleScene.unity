@@ -233,8 +233,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSet:
-  - {fileID: 11400000, guid: 453a2ba656fb3fa4bbfc309261d5f2af, type: 2}
-  - {fileID: 11400000, guid: 076e373d74e71c44299938bcb31a8a23, type: 2}
+  - {fileID: 11400000, guid: 21029134fc12edf4392fabae31c68c4b, type: 2}
+  alignment: 0
+  position: 0
 --- !u!1 &696504880
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,6 +472,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSet:
   - {fileID: 11400000, guid: 076e373d74e71c44299938bcb31a8a23, type: 2}
+  alignment: 0
+  position: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,6 +577,7 @@ MonoBehaviour:
   enemies:
   - {fileID: 1291286359}
   - {fileID: 1777999630}
+  markerPrefab: {fileID: 7320637316805566636, guid: 2fc919123bce222469a90be9872efe55, type: 3}
 --- !u!1 &1273772468
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,6 +722,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSet:
   - {fileID: 11400000, guid: a9e427ef8afe3504cac85f8fa5b5bf62, type: 2}
+  alignment: 0
+  position: 0
 --- !u!1 &1445754604
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,6 +835,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSet:
   - {fileID: 11400000, guid: 076e373d74e71c44299938bcb31a8a23, type: 2}
+  alignment: 0
+  position: 0
 --- !u!1 &1617043277
 GameObject:
   m_ObjectHideFlags: 0
@@ -1037,3 +1045,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSet:
   - {fileID: 11400000, guid: a9e427ef8afe3504cac85f8fa5b5bf62, type: 2}
+  alignment: 0
+  position: 0
