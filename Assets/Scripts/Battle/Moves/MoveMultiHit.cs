@@ -12,8 +12,8 @@ public class MoveMultiHit : MoveBehavior
 		return 2;
 	}
 
-	protected override Alignment ValidAlignment()
+	protected override TargetSelector PrimaryTarget()
 	{
-		return Alignment.Enemy;
+		return TargetSelector.Enemy;
 	}
 }

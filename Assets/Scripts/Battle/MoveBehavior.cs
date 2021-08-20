@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public abstract class MoveBehavior
 {
 	public Character[] targets;
 
-	public Alignment alignment => ValidAlignment();
-	public Position position => ValidPosition();
+	public TargetSelector primaryTarget => PrimaryTarget();
 	public int numTargets => NumTargets();
 
-	protected virtual Alignment ValidAlignment() { return Alignment.None; }
-	protected virtual Position ValidPosition() { return Position.None; }
+	protected virtual TargetSelector PrimaryTarget() { return TargetSelector.None; }
 	protected virtual int NumTargets() { return 0; }
 
-	// Events ---------------
 	public virtual void OnSelect() { Debug.Log("OnSelect"); } //do logic + coroutine for selecting targets
 	public virtual void OnDeselect() { Debug.Log("OnDeselect"); }
 	public virtual void OnUse() { Debug.Log("OnUse"); }
@@ -30,39 +26,27 @@ public abstract class MoveBehavior
 
 		int carat = 0;
 
-		if (numTargets == 0)
+		if (primaryTarget == TargetSelector.None)
 		{
 			yield return null;
 		}
 		else
 		{
-			participants[carat].ShowHideCarat();
-
 			while (need > 0)
 			{
-				//participants[carat].ShowHideCarat();
-
 				if (Input.GetKeyDown(KeyCode.LeftArrow))
 				{
-					participants[carat].HideCarat();
 					carat = ((carat - 1) + participants.Length) % participants.Length;
-					participants[carat].ShowCarat();
 					Debug.Log(carat);
 				}
 				if (Input.GetKeyDown(KeyCode.RightArrow))
 				{
-					participants[carat].HideCarat();
-
 					carat = (carat + 1) % participants.Length;
-					participants[carat].ShowCarat();
-
 					Debug.Log(carat);
 				}
 
 				if (Input.GetKeyDown(KeyCode.Space))
 				{
-					participants[carat].HideCarat();
-
 					selected[need - 1] = participants[carat]; //doesn't check if already in list
 					need--;
 					Debug.Log(carat);
@@ -79,20 +63,10 @@ public abstract class MoveBehavior
 	}
 }
 
-[Flags]
-public enum Alignment : byte
+public enum TargetSelector
 {
-	None = 0,
-	Player = 1,
-	Ally = 2,
-	Enemy = 4
-}
-
-[Flags]
-public enum Position : byte
-{
-	None = 0,
-	Ground = 1,
-	Air = 2,
-	Ceiling = 4
+	None,
+	Self,
+	Ally,
+	Enemy
 }
