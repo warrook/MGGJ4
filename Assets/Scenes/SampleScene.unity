@@ -585,6 +585,7 @@ MonoBehaviour:
   enemies:
   - {fileID: 1291286359}
   - {fileID: 1777999630}
+  markerPrefab: {fileID: 7320637316805566636, guid: 2fc919123bce222469a90be9872efe55, type: 3}
 --- !u!1 &1273772468
 GameObject:
   m_ObjectHideFlags: 0
