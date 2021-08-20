@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: CharmBlossom
   m_EditorClassIdentifier: 
   name: Charm Blossom
-  description: 
-  cost: 0
-  moveBehaviorName: MoveCharmBlossom
+  category: 
+  moveBehaviorName: 

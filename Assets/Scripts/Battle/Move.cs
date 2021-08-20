@@ -6,10 +6,8 @@ using UnityEngine;
 public class Move : ScriptableObject
 {
 	public new string name;
-	public string description;
-	public float cost;
+	public string category;
 	[SerializeField] private string moveBehaviorName;
-
 	public MoveBehavior behavior
 	{
 		get
