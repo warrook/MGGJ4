@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class MovePhysHit : MoveBehavior
 {
-	protected override TargetSelector PrimaryTarget()
+	protected override Alignment ValidAlignment()
 	{
-		return TargetSelector.Enemy;
+		return Alignment.Enemy;
 	}
 
 	protected override int NumTargets()
