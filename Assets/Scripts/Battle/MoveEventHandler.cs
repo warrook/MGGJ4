@@ -1,39 +1,47 @@
-﻿using System.Collections;
+﻿using Battle;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class MoveEventHandler
+namespace Battle
 {
-	private BattleController controller;
-	public UnityEvent
-		Select, //When the player selects the move
-		Deselect, //When the player backs out of a move
-		Use, //When the player activates the move, confirming any choices
-		Begin, //When the move starts an effect
-		Stop, //When the move stops an effect
-		End; //When the move finishes
-
-	public MoveEventHandler(BattleController controller)
+	/// <summary>
+	/// TODO: Use this instead of BattleController directly for move related things (like damage dealing)
+	/// </summary>
+	public class MoveEventHandler
 	{
-		this.controller = controller;
+		private BattleController controller;
+		private MoveBehavior behavior;
 
-		Select = new UnityEvent();
-		Deselect = new UnityEvent();
-		Use = new UnityEvent();
-		Begin = new UnityEvent();
-		Stop = new UnityEvent();
-		End = new UnityEvent();
-	}
+		//public UnityEvent
+		//	Select, //When the player selects the move
+		//	Deselect, //When the player backs out of a move
+		//	Use, //When the player activates the move, confirming any choices
+		//	Begin, //When the move starts an effect
+		//	Stop, //When the move stops an effect
+		//	End; //When the move finishes
 
-	public void Subscribe(Move subscriber)
-	{
-		MoveBehavior behavior = subscriber.behavior;
+		public MoveEventHandler(BattleController controller)
+		{
+			this.controller = controller;
+		}
 
-		Select.AddListener(behavior.OnSelect);
-		Deselect.AddListener(behavior.OnDeselect);
-		Use.AddListener(behavior.OnUse);
-		Begin.AddListener(behavior.OnBegin);
-		Stop.AddListener(behavior.OnStop);
-		End.AddListener(behavior.OnEnd);
+		public void Subscribe(Move subscriber)
+		{
+			behavior = subscriber.behavior;
+			behavior.AttachController(controller);
+		}
+
+		public IEnumerator Select()
+		{
+			return behavior.OnSelect();
+		}
+
+		public IEnumerator Use()
+		{
+			return behavior.OnUse();
+		}
+
+		public GUIHelper GUI() => controller.gui;
 	}
 }

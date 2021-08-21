@@ -1,0 +1,6 @@
+Before 8/22
+- Player characters have individual movesets
+- HP/FP readout
+- Damaging targets
+- Limit break
+- Enemies randomize moves

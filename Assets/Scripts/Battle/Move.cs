@@ -1,25 +1,29 @@
-﻿using System;
+﻿using Battle;
+using System;
 using System.Collections;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Game/Move")]
-public class Move : ScriptableObject
+namespace Battle
 {
-	public new string name;
-	public string description;
-	public float cost;
-	[SerializeField] private string moveBehaviorName;
-
-	public MoveBehavior behavior
+	[CreateAssetMenu(menuName = "Game/Move")]
+	public class Move : ScriptableObject
 	{
-		get
+		public new string name;
+		public string description;
+		public float cost;
+		[SerializeField] private string moveBehaviorName;
+
+		public MoveBehavior behavior
 		{
-			if (bhvr == null)
+			get
 			{
-				bhvr = (MoveBehavior)Activator.CreateInstance(Type.GetType(moveBehaviorName));
+				if (bhvr == null)
+				{
+					bhvr = (MoveBehavior)Activator.CreateInstance(Type.GetType(moveBehaviorName));
+				}
+				return bhvr;
 			}
-			return bhvr;
 		}
+		private MoveBehavior bhvr;
 	}
-	private MoveBehavior bhvr;
 }

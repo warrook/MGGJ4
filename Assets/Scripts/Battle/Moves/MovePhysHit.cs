@@ -1,21 +1,14 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class MovePhysHit : MoveBehavior
+namespace Battle.Moves
 {
-	protected override Alignment ValidAlignment()
+	public class MovePhysHit : MoveBaseSingleEnemy
 	{
-		return Alignment.Enemy;
-	}
-
-	protected override int NumTargets()
-	{
-		return 1;
-	}
-
-	public override void OnUse()
-	{
-		base.OnUse();
-		Debug.Log("Do physical");
+		protected override IEnumerator Use()
+		{
+			Debug.Log("Do Physical");
+			return base.Use();
+		}
 	}
 }

@@ -1,18 +1,37 @@
 ﻿using System.Collections;
 using UnityEngine;
+using Battle;
 
 public class Character : MonoBehaviour
 {
-	public Move[] moveSet;
-	public Alignment alignment;
-	public Position position;
+	public new string name;
+	public string description;
+	public float healthMax;
+	public float powerMax;
 
+	public float health { get; private set; }
+	public float power { get; private set; }
+
+	public Move[] moveSet;
+	private Alignment alignment;
+	private Position position;
+
+	//Ugly, get rid of these somehow
 	public GameObject markerPrefab;
+	private GUIHelper gui;
 	private GameObject marker;
 
 	private void Awake()
 	{
-		//markerPrefab = Resources.Load<GameObject>("Prefabs/Marker");
+		gui = GameObject.Find("BattleGUI").GetComponent<GUIHelper>();
+		health = healthMax;
+		power = powerMax;
+	}
+
+	public float Hurt(float by)
+	{
+		health = health - by < 0 ? 0 : health - by;
+		return health;
 	}
 
 	public void ShowHideCarat()
@@ -43,6 +62,7 @@ public class Character : MonoBehaviour
 		{
 			marker = Instantiate(markerPrefab, transform.position, markerPrefab.transform.rotation, transform);
 		}
+		gui.SetTarget(this);
 		return marker;
 	}
 }

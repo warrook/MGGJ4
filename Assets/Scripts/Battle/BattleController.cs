@@ -3,78 +3,82 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class BattleController : MonoBehaviour
+namespace Battle
 {
-    public Character[] allies;
-    public Character[] enemies;
-	public GameObject markerPrefab;
-
-	private List<Character> participants;
-	private GameObject marker;
-
-	//UnityEvent Select, Use, Begin, Stop, End;
-
-	private bool active;
-
-	private void Start()
+	public class BattleController : MonoBehaviour
 	{
-		StartCoroutine(TurnPacer());
-	}
+		public Character[] allies;
+		public Character[] enemies;
+		public GameObject markerPrefab;
 
-	IEnumerator TurnPacer()
-	{
-		participants = new List<Character>();
+		public Character[] participants => parts.ToArray();
+		private List<Character> parts;
+		private GameObject marker;
 
-		participants.AddRange(allies);
-		participants.AddRange(enemies);
+		public GUIHelper gui;
 
-		active = true;
-		int round = 0;
+		//UnityEvent Select, Use, Begin, Stop, End;
 
-		while (active)
+		private bool active;
+
+		private void Start()
 		{
-			for (var i = 0; i < participants.Count; i++)
-			{
-				Character part = participants[i]; //Pick a character to do next
-				Move move = part.moveSet[0]; //Take its first move
-				Debug.Log(part.name + " " + move.name);
-				MoveEventHandler handler = new MoveEventHandler(this); //Make this creation a reference to a singleton instead
-
-				handler.Subscribe(move);
-
-				yield return move.behavior.TargetSelection(participants.ToArray());
-				handler.Select.Invoke();
-				handler.Use.Invoke();
-				handler.Begin.Invoke();
-				handler.Stop.Invoke();
-				handler.End.Invoke();
-
-				yield return WaitForInput();
-			}
-
-			round++;
-			Debug.Log("Round " + round + " complete");
-			yield return WaitForInput();
-
-			if (round > 5)
-				break;
+			gui = GameObject.Find("BattleGUI").GetComponent<GUIHelper>();
+			StartCoroutine(TurnPacer());
 		}
 
-		Debug.Log("Done");
-		yield return null;
-	}
-
-	IEnumerator WaitForInput()
-	{
-		while (true)
+		IEnumerator TurnPacer()
 		{
-			if (Input.GetKeyDown(KeyCode.Return))
+			parts = new List<Character>();
+
+			parts.AddRange(allies);
+			parts.AddRange(enemies); //Desired: add a suffix for identically named enemies
+
+			active = true;
+			int round = 0;
+
+			while (active)
 			{
-				break;
+				for (var i = 0; i < parts.Count; i++)
+				{
+					Character part = parts[i]; //Pick a character to do next
+					Move move = part.moveSet[0]; //Take its first move
+					Debug.Log(part.name + " " + move.name);
+					MoveEventHandler handler = new MoveEventHandler(this); //Make this creation a reference to a singleton instead
+
+					handler.Subscribe(move);
+
+					//yield return move.behavior.TargetSelection(parts.ToArray());
+					yield return handler.Select();
+					yield return handler.Use();
+
+					yield return WaitForInput();
+				}
+
+				round++;
+				Debug.Log("Round " + round + " complete");
+				yield return WaitForInput();
+
+				if (round > 5)
+					break;
 			}
+
+			Debug.Log("Done");
 			yield return null;
 		}
 
-		yield return null;
+		IEnumerator WaitForInput()
+		{
+			while (true)
+			{
+				if (Input.GetKeyDown(KeyCode.Return))
+				{
+					break;
+				}
+				yield return null;
+			}
+
+			yield return null;
+		}
 	}
 }

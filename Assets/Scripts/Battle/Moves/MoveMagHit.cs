@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class MoveMagHit : MoveBehavior
+namespace Battle.Moves
 {
-	public override void OnUse()
+	public class MoveMagHit : MoveBaseSingleEnemy
 	{
-		base.OnUse();
-		Debug.Log("Do magic");
+		protected override IEnumerator Use()
+		{
+			Debug.Log("Do magic");
+			return base.Use();
+		}
 	}
 }

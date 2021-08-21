@@ -5,15 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class MoveMultiHit : MoveBehavior
+namespace Battle.Moves
 {
-	protected override int NumTargets()
+	public class MoveMultiHit : MoveBaseSingleEnemy
 	{
-		return 2;
-	}
-
-	protected override Alignment ValidAlignment()
-	{
-		return Alignment.Enemy;
+		protected override int NumTargets() => 2;
 	}
 }

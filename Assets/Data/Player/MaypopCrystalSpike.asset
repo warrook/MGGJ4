@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b1928e556c77c1146bf483622feb5549, type: 3}
-  m_Name: CharmBlossom
+  m_Name: MaypopCrystalSpike
   m_EditorClassIdentifier: 
-  name: Charm Blossom
+  name: Crystal Spike
   description: 
   cost: 0
-  moveBehaviorName: MoveCharmBlossom
+  moveBehaviorName: MoveMaypopCrystalSpike
