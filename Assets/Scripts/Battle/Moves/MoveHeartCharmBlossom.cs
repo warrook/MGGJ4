@@ -9,9 +9,6 @@ namespace Battle.Moves
 {
 	public class MoveHeartCharmBlossom : MoveBaseSingleEnemy
 	{
-		protected override Position ValidPosition()
-		{
-			return Position.Ground | Position.Air;
-		}
+		protected override Position ValidPosition() => Position.Ground | Position.Air;
 	}
 }

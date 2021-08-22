@@ -15,15 +15,23 @@ namespace Battle
 		 * - Use, that takes input while the action command is going
 		 */
 		protected MoveEventHandler handler;
+		private GUIHelper gui;
 
 		public void AttachHandler(MoveEventHandler handler)
 		{
 			this.handler = handler;
+			gui = handler.GUI();
 		}
 
-		public virtual void Begin()
+		public virtual IEnumerator Begin()
 		{
-			GUIHelper gui = handler.GUI();
+			yield return Use();
+		}
+
+		public virtual IEnumerator Use()
+		{
+			gui.Draw();
+			yield return null;
 		}
 	}
 }

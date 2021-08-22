@@ -50,6 +50,7 @@ namespace Battle
 
 					//yield return move.behavior.TargetSelection(parts.ToArray());
 					yield return handler.Select();
+					gui.Draw();
 					yield return handler.Use();
 
 					yield return WaitForInput();
