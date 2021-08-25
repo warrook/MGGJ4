@@ -40,31 +40,50 @@ namespace Battle
 
 		public void Draw()
 		{
-			GameObject parent = Instantiate(new GameObject("ACHolder"), transform);
-			GameObject node = new GameObject("Node");
-			Image image = node.AddComponent<Image>();
-			image.sprite = InactiveSprite;
-			//node.transform.localScale = new Vector3(16, 16);
-			image.rectTransform.sizeDelta = new Vector2(16, 16);
-			image.color = Color.red;
+			DrawPips(11);
+		}
 
-			GameObject window = new GameObject("window");
-			var e = window.AddComponent<Image>();
-			e.sprite = WindowSprite;
-			float border = 26;
-			e.rectTransform.sizeDelta = new Vector2(border * 2 + 20 * 5, border * 2);
-			e.type = Image.Type.Sliced;
-			Instantiate(window, parent.transform.position, node.transform.rotation, parent.transform);
+		public void DrawPips(float numPips)
+		{
+			float width = 20 * (numPips - 1);
+			var holder = Window(transform, "PipWindow", 0, width);
+			Vector3 centershift = Vector3.right * (width / 2);
 
-			for (var i = 0; i < 5; i++)
+
+			for (int i = 0; i < numPips; i++)
 			{
-				Instantiate(node, parent.transform.position + Vector3.right * (20 * i), node.transform.rotation, parent.transform);
+				Vector3 pos = holder.transform.position + (Vector3.right * (20 * i)) - centershift;
+				var g = Pip(holder.transform, ActiveSprite, 16, new Color(0.9f, 0.7f, 0.8f));
+				g.transform.position = pos;
 			}
 
-			//Destroy(node);
-			//Destroy(parent);
-			//Destroy(window);
+			holder.transform.position = new Vector3(200, 100);
+		}
 
+		private GameObject Pip(Transform parent, Sprite sprite, float size, Color color)
+		{
+			var g = new GameObject("Pip");
+			g.transform.parent = parent;
+
+			var image = g.AddComponent<Image>();
+			image.sprite = sprite;
+			image.rectTransform.sizeDelta = new Vector2(size, size);
+			image.color = color;
+			return g;
+		}
+
+		private GameObject Window(Transform parent, string name, float internal_height, float internal_width)
+		{
+			var g = new GameObject(name);
+			g.transform.parent = parent;
+
+			var image = g.AddComponent<Image>();
+			image.sprite = WindowSprite;
+			image.type = Image.Type.Sliced;
+			int border = (int)image.sprite.border.x * 2;
+			image.rectTransform.sizeDelta = new Vector2(border + internal_width, border + internal_height);
+
+			return g;
 		}
 	}
 }

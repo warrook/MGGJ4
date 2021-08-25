@@ -3,7 +3,11 @@ guid: 263ba39a20fa9124d8f4f538e4ffce1e
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - InactiveSprite: {fileID: 21300000, guid: 923371458c23a8a46b6ff122c8d78436, type: 3}
+  - ActiveSprite: {fileID: 21300000, guid: 049fff2b7f598e346816bd712d799b7b, type: 3}
+  - WindowSprite: {fileID: 21300000, guid: d4111163726bc7546a4484c1ecbce6c2, type: 3}
+  - ProceedSprite: {fileID: 21300000, guid: f9e3967c3b7d9df4eb911825763836ab, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
