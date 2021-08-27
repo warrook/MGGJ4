@@ -4,3 +4,26 @@ Before 8/22
 - Damaging targets
 - Limit break
 - Enemies randomize moves
+
+
+dialogue -
+	chaining system -- one key leads into another
+	support for additional character comments
+	conversation participants are stored
+	some kind of text key replacement system
+		support for colors (easy with tmpro)
+
+desired:
+
+
+
+Dialogue stores array of strings, with the accompanying effect to render them with
+	
+Conversation operates one collection of Dialogues, one after another
+
+
+/(<.?:)(.+?>)
+
+Hello! I'm <c:flora-heart|Flora Heart>, champion of truth and love! Or something like that, um. This is <c:flora-maypop|Flora Maypop>, and <c:flora-paradise|Flora Paradise>! I'm the leader of <c:flora-paradise;e:bold|Team Flora>!
+
+Hello! I'm <style="flora-heart">Flora Heart</style>, champion of truth and love! Or something like that, um. This is <style="flora-maypop">Flora Maypop</style>, and <style="flora-paradise">Flora Paradise</style>! I'm the leader of <style="flora-team">Team Flora</style>!
