@@ -7,8 +7,8 @@ namespace Common
     [CreateAssetMenu(menuName = "Game/Dialogue Element")]
     public class DialogueElement : ScriptableObject
     {
-        public string dialogueKey;
+        public string nameOfNextDialogue;
+        [TextArea(4, 16)]
         public string text;
-        public string keyForNextDialogue;
     }
 }
