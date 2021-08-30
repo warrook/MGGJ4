@@ -5,21 +5,17 @@ using UnityEngine.Events;
 
 namespace Battle
 {
-	public class BattleController : MonoBehaviour
+	public class BattleManager : MonoBehaviour
 	{
-		public Character[] allies;
-		public Character[] enemies;
-		public GameObject markerPrefab;
+		private bool isActive;
 
-		public Character[] participants => parts.ToArray();
-		private List<Character> parts;
-		private GameObject marker;
+		public List<BattleActor> allies;
+		public List<BattleActor> enemies;
+		private List<BattleActor> actors;
 
 		public GUIHelper gui;
-
-		//UnityEvent Select, Use, Begin, Stop, End;
-
-		private bool active;
+		public GameObject markerPrefab;
+		private GameObject marker;
 
 		private void Start()
 		{
@@ -29,15 +25,35 @@ namespace Battle
 
 		IEnumerator TurnPacer()
 		{
-			parts = new List<Character>();
+			isActive = true;
 
-			parts.AddRange(allies);
-			parts.AddRange(enemies); //Desired: add a suffix for identically named enemies
+			actors = new List<BattleActor>(allies.Count + enemies.Count);
+			actors.AddRange(allies);
+			actors.AddRange(enemies);
 
-			active = true;
 			int round = 0;
 
-			while (active)
+			while (true)
+			{
+				for (var i = 0; i < actors.Count; i++)
+				{
+					BattleActor actor = actors[i];
+					if (actor.Alignment == Alignment.Player)
+					{
+
+					}
+					else
+					{
+
+					}
+
+					//yield return PickMove
+					//yield return PickTarget
+					//yield return Use
+				}
+			}
+			/*
+			while (isActive)
 			{
 				for (var i = 0; i < parts.Count; i++)
 				{
@@ -63,7 +79,7 @@ namespace Battle
 				if (round > 5)
 					break;
 			}
-
+			*/
 			Debug.Log("Done");
 			yield return null;
 		}

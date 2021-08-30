@@ -10,7 +10,7 @@ namespace Battle
 	/// </summary>
 	public class MoveEventHandler
 	{
-		private BattleController controller;
+		private BattleManager controller;
 		private MoveBehavior behavior;
 
 		//public UnityEvent
@@ -21,7 +21,7 @@ namespace Battle
 		//	Stop, //When the move stops an effect
 		//	End; //When the move finishes
 
-		public MoveEventHandler(BattleController controller)
+		public MoveEventHandler(BattleManager controller)
 		{
 			this.controller = controller;
 		}

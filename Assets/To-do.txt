@@ -6,24 +6,29 @@ Before 8/22
 - Enemies randomize moves
 
 
-dialogue -
-	chaining system -- one key leads into another
-	support for additional character comments
-	conversation participants are stored
-	some kind of text key replacement system
-		support for colors (easy with tmpro)
+girl capabilities in combat:
+	use a move
+		- free damaging touch - only in reach targets
+		- free damaging range - any target
+		- signature move
+		- any equipped moves
+			- cheap damaging touch
+			- cheap damaging range
+	[use item]
+	move position
+	run away
 
-desired:
+moves can:
+	- deal damage
+	- heal damage
+	- impart status effects
+	- alter stats
+	- move characters
 
+maximal information:
+	status effects/stat adjustments
+	position (adjacency + location in battle)
+	health + power
+	moveset
 
-
-Dialogue stores array of strings, with the accompanying effect to render them with
-	
-Conversation operates one collection of Dialogues, one after another
-
-
-/(<.?:)(.+?>)
-
-Hello! I'm <c:flora-heart|Flora Heart>, champion of truth and love! Or something like that, um. This is <c:flora-maypop|Flora Maypop>, and <c:flora-paradise|Flora Paradise>! I'm the leader of <c:flora-paradise;e:bold|Team Flora>!
-
-Hello! I'm <style="flora-heart">Flora Heart</style>, champion of truth and love! Or something like that, um. This is <style="flora-maypop">Flora Maypop</style>, and <style="flora-paradise">Flora Paradise</style>! I'm the leader of <style="flora-team">Team Flora</style>!
+use a dummy character to serve as a comparator for move selection? hard to use when multiple options are acceptable (unless bits?)

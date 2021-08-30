@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 108f91d363aca3e4391a18c22ac90917, type: 3}
+  m_Name: TestActor
+  m_EditorClassIdentifier: 
+  actorName: Tester
+  tattleStartDialogue: {fileID: 0}
+  defaultHealth: 5
+  defaultPower: 0
+  moveSet:
+  - {fileID: 11400000, guid: 21029134fc12edf4392fabae31c68c4b, type: 2}
+  - {fileID: 11400000, guid: ba596c50252c1ab4592c878b805ebb2a, type: 2}
+  - {fileID: 11400000, guid: 73c2492e28ac88d4faaa850d04611a0a, type: 2}

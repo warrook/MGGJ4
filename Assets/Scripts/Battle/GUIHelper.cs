@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,13 @@ namespace Battle
 		private void Awake()
 		{
 			targetName = GameObject.Find("TargetName").GetComponent<TextMeshProUGUI>();
+		}
+
+		public IEnumerator OptionWindow(object[] options)
+		{
+
+
+			yield return null;
 		}
 
 		public void SetTarget(Character target)

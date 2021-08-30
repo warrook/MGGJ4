@@ -9,7 +9,7 @@ namespace Battle
 		//protected class CoroutineHandler : MonoBehaviour { }
 		//protected static CoroutineHandler coroutineHandler = new GameObject("CoroutineHandler").AddComponent<CoroutineHandler>();
 
-		protected BattleController controller;
+		protected BattleManager controller;
 		public Character[] targets;
 
 		// Accessors
@@ -27,7 +27,7 @@ namespace Battle
 			return BaseDamage();
 		}
 
-		public void AttachController(BattleController controller)
+		public void AttachController(BattleManager controller)
 		{
 			this.controller = controller;
 		}
@@ -58,7 +58,7 @@ namespace Battle
 			int need = numTargets;
 			Character[] selected = new Character[need];
 			Debug.Log("Need " + need + " selected targets.");
-			Character[] participants = controller.participants;
+			Character[] participants = null;// controller.participants;
 
 			int carat = 0;
 

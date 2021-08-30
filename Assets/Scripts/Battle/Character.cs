@@ -2,6 +2,7 @@
 using UnityEngine;
 using Battle;
 
+[System.Obsolete("Transition usage to new class BattleActor.")]
 public class Character : MonoBehaviour
 {
 	public new string name;
